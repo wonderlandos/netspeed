@@ -1,0 +1,41 @@
+{
+ "name": "bar before the first answer and on failure",
+ "script": "bar.lua",
+ "kind": "menubar",
+ "entry": "bar",
+ "run": {
+  "cat /proc/uptime /proc/net/dev": [
+   {
+    "error": "Still reading..."
+   }
+  ]
+ },
+ "steps": [
+  {
+   "do": "render",
+   "now": [
+    2026,
+    11,
+    5,
+    4,
+    14,
+    0,
+    0
+   ]
+  },
+  {
+   "do": "popover"
+  }
+ ],
+ "expect": [
+  "Net: -",
+  "Still reading..."
+ ],
+ "absent": [
+  "ERROR"
+ ],
+ "plugin": "wonderlandos.netspeed",
+ "permissions": [
+  "run"
+ ]
+}

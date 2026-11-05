@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# WolOS Hub: a pushed version tag becomes a GitHub release with wonderlandos.netspeed-<version>.wolplug,
+# checked with the hub's own hubcheck first. Listing wonderlandos.netspeed (connected on hub.wolos.org as wonderlandos).
+# Tag: v<plugin.toml version>, e.g. v1.0.
+name: hub-release
+on:
+  push:
+    tags: ["v[0-9]*"]
+permissions:
+  contents: write
+jobs:
+  hub:
+    # Pinned to wonderlandos/hub aef80b2 (wol-release.yml and tools/wolpack); move both pins together.
+    uses: wonderlandos/hub/.github/workflows/wol-release.yml@aef80b2a3b8e13cd6f47f8525f423fc031c8b563
+    with:
+      tools_ref: aef80b2a3b8e13cd6f47f8525f423fc031c8b563
+      kind: plugin
+      id: wonderlandos.netspeed
+      set_id: wonderlandos.netspeed

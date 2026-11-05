@@ -1,0 +1,40 @@
+{
+ "name": "a counter that went down gives no rate",
+ "script": "bar.lua",
+ "kind": "menubar",
+ "entry": "bar",
+ "run": {
+  "cat /proc/uptime /proc/net/dev": [
+   "1000.00 12345.00\nInter-|   Receive                                                |  Transmit\n face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\n    lo: 999999 10 0 0 0 0 0 0 999999 10 0 0 0 0 0 0\nenp3s0: 5000000 100 0 0 0 0 0 0 5000000 80 0 0 0 0 0 0\nwlan0: 0 5 0 0 0 0 0 0 0 5 0 0 0 0 0 0\nveth12ab: 5000000000 1 0 0 0 0 0 0 5000000000 1 0 0 0 0 0 0\n",
+   "1002.00 12345.00\nInter-|   Receive                                                |  Transmit\n face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\n    lo: 999999 10 0 0 0 0 0 0 999999 10 0 0 0 0 0 0\nenp3s0: 1000 100 0 0 0 0 0 0 1000 80 0 0 0 0 0 0\nwlan0: 0 5 0 0 0 0 0 0 0 5 0 0 0 0 0 0\nveth12ab: 5000000000 1 0 0 0 0 0 0 5000000000 1 0 0 0 0 0 0\n"
+  ]
+ },
+ "steps": [
+  {
+   "do": "render",
+   "now": [
+    2026,
+    11,
+    5,
+    4,
+    14,
+    0,
+    0
+   ]
+  },
+  {
+   "do": "render"
+  }
+ ],
+ "expect": [
+  "↓ -",
+  "↑ -"
+ ],
+ "absent": [
+  "ERROR"
+ ],
+ "plugin": "wonderlandos.netspeed",
+ "permissions": [
+  "run"
+ ]
+}

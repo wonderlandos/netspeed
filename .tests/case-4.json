@@ -1,0 +1,45 @@
+{
+ "name": "an answer the shell hands back twice keeps the last speed",
+ "script": "bar.lua",
+ "kind": "menubar",
+ "entry": "bar",
+ "run": {
+  "cat /proc/uptime /proc/net/dev": [
+   "1000.00 12345.00\nInter-|   Receive                                                |  Transmit\n face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\n    lo: 999999 10 0 0 0 0 0 0 999999 10 0 0 0 0 0 0\nenp3s0: 0 100 0 0 0 0 0 0 0 80 0 0 0 0 0 0\nwlan0: 0 5 0 0 0 0 0 0 0 5 0 0 0 0 0 0\nveth12ab: 5000000000 1 0 0 0 0 0 0 5000000000 1 0 0 0 0 0 0\n",
+   "1002.00 12345.00\nInter-|   Receive                                                |  Transmit\n face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\n    lo: 999999 10 0 0 0 0 0 0 999999 10 0 0 0 0 0 0\nenp3s0: 2000000 100 0 0 0 0 0 0 2000 80 0 0 0 0 0 0\nwlan0: 0 5 0 0 0 0 0 0 0 5 0 0 0 0 0 0\nveth12ab: 5000000000 1 0 0 0 0 0 0 5000000000 1 0 0 0 0 0 0\n",
+   "1002.00 12345.00\nInter-|   Receive                                                |  Transmit\n face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\n    lo: 999999 10 0 0 0 0 0 0 999999 10 0 0 0 0 0 0\nenp3s0: 2000000 100 0 0 0 0 0 0 2000 80 0 0 0 0 0 0\nwlan0: 0 5 0 0 0 0 0 0 0 5 0 0 0 0 0 0\nveth12ab: 5000000000 1 0 0 0 0 0 0 5000000000 1 0 0 0 0 0 0\n"
+  ]
+ },
+ "steps": [
+  {
+   "do": "render",
+   "now": [
+    2026,
+    11,
+    5,
+    4,
+    14,
+    0,
+    0
+   ]
+  },
+  {
+   "do": "render"
+  },
+  {
+   "do": "render"
+  }
+ ],
+ "expect": [
+  "↓ 1.0 MB/s",
+  "↑ 1 kB/s"
+ ],
+ "absent": [
+  "↓ 0 B/s",
+  "ERROR"
+ ],
+ "plugin": "wonderlandos.netspeed",
+ "permissions": [
+  "run"
+ ]
+}

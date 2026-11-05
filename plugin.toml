@@ -1,0 +1,27 @@
+# Net Speed: download and upload speed in the menu bar, with a desktop card that keeps the last
+# two minutes. Counters come from /proc/net/dev and the clock from /proc/uptime, read in one
+# command through wol.run (permission "run"); nothing is sent anywhere.
+schema = 1
+id = "wonderlandos.netspeed"
+name = "Net Speed"
+version = "1.0"
+author = "WolOS"
+license = "GPL-2.0-or-later"
+description = "Download and upload speed in the menu bar, and a card with the last two minutes."
+min_wolos = "0.13"
+permissions = ["run"]
+icon = "icon.png"
+screenshots = ["preview.webp"]
+categories = ["Work"]
+homepage = "https://github.com/wonderlandos/netspeed"
+about = "Net Speed shows how fast this computer is downloading and uploading right now.\n\nThe menu bar item shows both speeds and refreshes every two seconds; click it for each network connection and how much it has moved since the computer started. The desktop card draws the last two minutes as a small graph.\n\nIt counts every real connection (Wi-Fi, Ethernet, VPN) and leaves out the computer's own loopback and the virtual bridges containers and virtual machines make. It reads the counters the system already keeps; it sends nothing anywhere."
+
+[[menubar]]
+id = "bar"
+script = "bar.lua"
+side = "right"
+
+[[widget]]
+id = "card"
+script = "card.lua"
+sizes = ["small", "medium"]
