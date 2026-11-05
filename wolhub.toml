@@ -1,0 +1,13 @@
+# The hub's publisher manifest (https://hub.wolos.org, docs/WOLHUB-TOML.md in hub-worker).
+# The hub reads it at connect and at every release: this repository is a plugin, its release file is the .wolplug.
+schema = 1
+kind = "plugin"
+id = "wonderlandos.netspeed"
+license = "GPL-2.0-or-later"
+asset = "wonderlandos.netspeed-*.wolplug"
+homepage = "https://github.com/wonderlandos/netspeed"
+min_wolos = "0.13"
+name = "Net Speed"
+summary = "Download and upload speed in the menu bar, and a card with the last two minutes."
+icon = "icon.png"
+screenshots = ["preview.webp"]
